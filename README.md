@@ -1,6 +1,6 @@
-[![Build Status](https://travis-ci.org/corona10/goimagehash.svg?branch=master)](https://travis-ci.org/corona10/goimagehash)
-[![GoDoc](https://godoc.org/github.com/corona10/goimagehash?status.svg)](https://godoc.org/github.com/corona10/goimagehash)
-[![Go Report Card](https://goreportcard.com/badge/github.com/corona10/goimagehash)](https://goreportcard.com/report/github.com/corona10/goimagehash)
+[![Build Status](https://travis-ci.org/ilaripih/goimagehash.svg?branch=master)](https://travis-ci.org/ilaripih/goimagehash)
+[![GoDoc](https://godoc.org/github.com/ilaripih/goimagehash?status.svg)](https://godoc.org/github.com/ilaripih/goimagehash)
+[![Go Report Card](https://goreportcard.com/badge/github.com/ilaripih/goimagehash)](https://goreportcard.com/report/github.com/ilaripih/goimagehash)
 
 # goimagehash
 > Inspired by [imagehash](https://github.com/JohannesBuchner/imagehash)
@@ -15,7 +15,7 @@ A image hashing library written in Go. ImageHash supports:
 
 ## Installation
 ```
-go get github.com/corona10/goimagehash
+go get github.com/ilaripih/goimagehash
 ```
 ## Special thanks to
 * [Haeun Kim](https://github.com/haeungun/)
@@ -31,13 +31,13 @@ func main() {
 
         img1, _ := jpeg.Decode(file1)
         img2, _ := jpeg.Decode(file2)
-        hash1, _ := goimagehash.AverageHash(img1)
-        hash2, _ := goimagehash.AverageHash(img2)
+        hash1, _ := goimagehash.AverageHash(img1, 8)
+        hash2, _ := goimagehash.AverageHash(img2, 8)
         distance, _ := hash1.Distance(hash2)
         fmt.Printf("Distance between images: %v\n", distance)
 
-        hash1, _ = goimagehash.DifferenceHash(img1)
-        hash2, _ = goimagehash.DifferenceHash(img2)
+        hash1, _ = goimagehash.DifferenceHash(img1, 8)
+        hash2, _ = goimagehash.DifferenceHash(img2, 8)
         distance, _ = hash1.Distance(hash2)
         fmt.Printf("Distance between images: %v\n", distance)
 }

@@ -15,7 +15,7 @@ func TestHashCompute(t *testing.T) {
 	for _, tt := range []struct {
 		img1     string
 		img2     string
-		method   func(img image.Image) (*ImageHash, error)
+		method   func(img image.Image, size int) (*ImageHash, error)
 		name     string
 		distance int
 	}{
@@ -69,11 +69,11 @@ func TestHashCompute(t *testing.T) {
 			t.Errorf("%s", err)
 		}
 
-		hash1, err := tt.method(img1)
+		hash1, err := tt.method(img1, 8)
 		if err != nil {
 			t.Errorf("%s", err)
 		}
-		hash2, err := tt.method(img2)
+		hash2, err := tt.method(img2, 8)
 		if err != nil {
 			t.Errorf("%s", err)
 		}

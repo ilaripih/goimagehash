@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/corona10/goimagehash"
+	"github.com/ilaripih/goimagehash"
 	"image/jpeg"
 	"os"
 )
@@ -15,18 +15,18 @@ func main() {
 
 	img1, _ := jpeg.Decode(file1)
 	img2, _ := jpeg.Decode(file2)
-	hash1, _ := goimagehash.AverageHash(img1)
-	hash2, _ := goimagehash.AverageHash(img2)
+	hash1, _ := goimagehash.AverageHash(img1, 8)
+	hash2, _ := goimagehash.AverageHash(img2, 8)
 	distance, _ := hash1.Distance(hash2)
 	fmt.Printf("Distance between images: %v\n", distance)
 
-	hash1, _ = goimagehash.DifferenceHash(img1)
-	hash2, _ = goimagehash.DifferenceHash(img2)
+	hash1, _ = goimagehash.DifferenceHash(img1, 8)
+	hash2, _ = goimagehash.DifferenceHash(img2, 8)
 	distance, _ = hash1.Distance(hash2)
 	fmt.Printf("Distance between images: %v\n", distance)
 
-        hash1, _ = goimagehash.PerceptionHash(img1)
-        hash2, _ = goimagehash.PerceptionHash(img2)
+        hash1, _ = goimagehash.PerceptionHash(img1, 8)
+        hash2, _ = goimagehash.PerceptionHash(img2, 8)
         distance, _ = hash1.Distance(hash2)
         fmt.Printf("Distance between images: %v\n", distance)
 }

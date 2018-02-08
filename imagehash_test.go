@@ -61,7 +61,7 @@ func TestSerialization(t *testing.T) {
 		}
 	}
 
-	methods := []func(img image.Image) (*ImageHash, error){
+	methods := []func(img image.Image, size int) (*ImageHash, error){
 		AverageHash, PerceptionHash, DifferenceHash,
 	}
 	examples := []string{
@@ -80,7 +80,7 @@ func TestSerialization(t *testing.T) {
 		for _, method := range methods {
 			methodStr := runtime.FuncForPC(reflect.ValueOf(method).Pointer()).Name()
 
-			hash, err := method(img)
+			hash, err := method(img, 8)
 			checkErr(err)
 
 			hex := hash.ToString()
